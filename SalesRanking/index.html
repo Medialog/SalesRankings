@@ -29,7 +29,8 @@
         
         <!-- General -->
         
-        <div id="tabstrip-general" data-role="view" data-title="Geral" data-model="app.homeService.viewModel">
+        <div id="tabstrip-general" data-role="view" data-title="Geral" data-model="app.homeService.viewModel"
+            data-show="app.homeService.viewModel.createClientLastMonthGrowthChart" data-hide="app.homeService.viewModel.unbindResizeEvent">
             
             <div id="home">
                 <div class="container-fluid">
@@ -44,7 +45,7 @@
                             </div>
                         </div>
                         <div style="border: 1px solid #bbd8e9;padding: 2px;-webkit-border-radius: 5px;border-radius: 5px;" class="span8">
-                            <div id="column-chart"></div>
+                            <div id="clientcolumn-chart"></div>
                         </div>
                     </div>
                 </div>
