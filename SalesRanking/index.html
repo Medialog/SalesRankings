@@ -7,7 +7,7 @@
         <link href="kendo/styles/kendo.dataviz.mobile.min.css" rel="stylesheet" />
         
         <!--Once the final theme is chosen the redundant css reference should removed-->
-        <link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet" />
+        <!--<link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet" />-->
         <link href="kendo/styles/kendo.dataviz.silver.min.css" rel="stylesheet" />
 
         <link href="styles/main.css" rel="stylesheet" />
@@ -17,13 +17,21 @@
         <script src="kendo/js/kendo.dataviz.mobile.min.js"></script>
 
         <script src="scripts/app.js"></script>
-        <script src="scripts/pie-chart.js"></script>
-        <script src="scripts/gauge.js"></script>
-        <script src="scripts/qr-code.js"></script>
-        <script src="scripts/stock-chart.js"></script>        
+        <script src="scripts/home.js"></script>
+        <script src="scripts/pie-chart.js"></script>    
     </head>
     
     <body>
+        
+        <!-- General -->
+        <div id="tabstrip-general" data-role="view" data-title="Geral">
+            
+            <div data-role="content" class="view-content">
+                <div>TESTE</div>
+            </div>
+            
+        </div>
+        
         <!--Pie chart-->
         <div id="tabstrip-pie-chart"  
              data-role="view" 
@@ -34,53 +42,6 @@
 
             <div data-role="content" class="view-content">
                 <div id="pie-chart"></div>
-            </div>
-
-        </div>
-
-        <!--Gauge-->
-        <div id="tabstrip-gauge"
-             data-role="view" 
-             data-title="Gauge" 
-             data-show="app.gauge.createGauge" 
-             data-hide="app.gauge.unbindResizeEvent" 
-             data-stretch="true">
-
-            <div id="gauge-wrap" data-role="content" class="view-content">
-                <div id="gauge"></div>
-                <div class="input-content">
-                    <input id="gauge-value" type="range">
-                </div>
-            </div>
-
-        </div>
-
-        <!--QR code-->
-        <div id="tabstrip-qrcode"  
-             data-role="view" 
-             data-title="QR Code" 
-             data-show="app.qrcode.createQRCode">
-
-            <div data-role="content" class="view-content">
-                <div id="qrcode"></div>
-                <div class="input-content">
-                    <input type="text" id="qrcode-value" value="http://www.icenium.com/">
-                    <a data-role="button" id="qrcode-generate">Update QR</a>
-                </div>
-            </div>
-
-        </div>
-
-        <!--Stock chart-->
-        <div id="tabstrip-stock-chart"
-             data-role="view" 
-             data-title="Stock Chart"
-             data-show="app.stockChart.createStockChart" 
-             data-hide="app.stockChart.unbindResizeEvent"
-             data-stretch="true">
-
-            <div data-role="content" class="view-content">
-                <div id="stock-chart"></div>
             </div>
 
         </div>
@@ -100,10 +61,8 @@
             <!--Footer-->
             <div data-role="footer">
                 <div data-role="tabstrip">
+                    <a href="#tabstrip-general" data-icon="Home">Geral</a>
                     <a href="#tabstrip-pie-chart" data-icon="globe">Pie Chart</a>
-                    <a href="#tabstrip-gauge" data-icon="recents">Gauge</a>
-                    <a href="#tabstrip-qrcode" data-icon="camera">QR Code</a>
-                    <a href="#tabstrip-stock-chart" data-icon="featured">Stock Chart</a>
                 </div>
             </div>
 

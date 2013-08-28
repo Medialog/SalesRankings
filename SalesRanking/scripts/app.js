@@ -7,7 +7,7 @@
     app.chartsTheme = defaultChartTheme;    
 
     document.addEventListener("deviceready", function () {
-        application = new kendo.mobile.Application(document.body, { transition: "", layout: "mobile-tabstrip" });
+        application = new kendo.mobile.Application(document.body, { transition: "slide", layout: "mobile-tabstrip" });
     }, false);
 
     //Skin change function is for the demo. On real project only one theme should be chosen.
