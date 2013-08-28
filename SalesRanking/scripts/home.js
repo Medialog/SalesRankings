@@ -28,13 +28,13 @@
             
             kendo.data.ObservableObject.fn.init.apply(that, []);
             
-            /*getData(10, "http://localhost/SalesRankingWeb/api/Clients/GetClientAbsoluteRanking?json=true", "absoluteRankingDataSource", that);
+            //getData(10, "http://localhost/SalesRankingWeb/api/Clients/GetClientAbsoluteRanking?json=true", "absoluteRankingDataSource", that);
             
-            getData(10, "http://localhost/SalesRankingWeb/api/Clients/GetClientLastMonthAbsoluteRanking?json=true", "absoluteRankingLastMonthDataSource", that);
+            //getData(10, "http://localhost/SalesRankingWeb/api/Clients/GetClientLastMonthAbsoluteRanking?json=true", "absoluteRankingLastMonthDataSource", that);
             
-            getData(10, "http://localhost/SalesRankingWeb/api/Clients/GetClientLastMonthGrowth?json=true", "lastMonthGrowthDataSource", that);
+            getData(8, "http://localhost/SalesRankingWeb/api/Clients/GetClientLastMonthGrowth?json=true", "lastMonthGrowthDataSource", that);
             
-            getData(10, "http://localhost/SalesRankingWeb/api/Clients/ClientRankingByYear?json=true", "yearGrowthDataSource", that);*/
+            //getData(10, "http://localhost/SalesRankingWeb/api/Clients/ClientRankingByYear?json=true", "yearGrowthDataSource", that);*/
             
             getData(5, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorLastMonthGrowthRanking?json=true", "vendorGrowthLastMonthDataSource", that);
         },
@@ -48,17 +48,7 @@
             var $columnChart = $("#clientcolumn-chart");
 
             columnChart = $columnChart.kendoChart({
-                dataSource: new kendo.data.DataSource({
-        data: [
-          { client: "SIC", value: 47.1, vendors: "António" },
-          { client: "TVI", value: 40.5, vendors: "aa" },
-          { client: "RTP1", value: 31.5, vendors: "zz" },
-          { client: "Eurosport", value: 30.0, vendors: "xx" },
-          { client: "BBC", value: 14.1, vendors: "aaa" },
-          { client: "SIC Mulher", value: 6.9, vendors: "aaa" },
-          { client: "TVI24", value: 6.2, vendors: "aaa" }
-        ]
-      }),
+                dataSource: this.lastMonthGrowthDataSource,
                 theme: app.chartsTheme,
                 renderAs: "svg",
                 title: {
@@ -76,16 +66,17 @@
                 },
                 series: [
                     {
-                        field: 'value'
+                        field: "Growth"
                     }
                 ],
                 categoryAxis: {
-                    field: "client",
+                    field: "Client",
                     majorGridLines: {
                         visible: false
                     },
                     labels:{
-                        template: '#: data.value #'
+                        template: '#: data.value.toString().length > 25 ? data.value.substring(0,25) + "..." : data.value #',
+                        rotation: -90
                     }
                 },
                 valueAxis: {
@@ -98,8 +89,9 @@
                 },
                 tooltip: {
                     visible: true,
-                    template: kendo.template('#: value # % #: dataItem.vendors #')
-                }
+                    template: kendo.template('#: value #% Vendedor:#: dataItem.Vendors #')
+                },
+                
             }).data("kendoChart");
         },
         
