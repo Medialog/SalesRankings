@@ -9,35 +9,19 @@
         <!--Once the final theme is chosen the redundant css reference should removed-->
         <!--<link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet" />-->
         <link href="kendo/styles/kendo.dataviz.silver.min.css" rel="stylesheet" />
-        <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
-
+        <link href="kendo/styles/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="kendo/styles/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
         <link href="styles/main.css" rel="stylesheet" />
 
         <script src="cordova.js"></script>        
         <script src="kendo/js/jquery.min.js"></script>
         
         <script src="kendo/js/kendo.dataviz.mobile.min.js"></script>
+        <script src="kendo/js/bootstrap.min.js"></script>
                 
         <script src="scripts/app.js"></script>
         <script src="scripts/home.js"></script>
         <script src="scripts/pie-chart.js"></script>    
-        <script src="kendo/js/kendo.all.min.js"></script>
-        
-        <style type="text/css">
-
-          #internalSplitView .km-pane,
-          #internalSplitView .km-view > :first-child,
-          #internalSplitView .km-view > :last-child
-          {
-              border-radius: 0;
-              -webkit-border-radius: 0;
-          }
-
-          .km-stretched-view {
-              -webkit-box-orient: vertical;
-              -webkit-flex-direction: column;
-          }
-        </style>
         
     </head>
     
@@ -46,9 +30,16 @@
         <!-- General -->
         <div id="tabstrip-general" data-role="view" data-title="Geral">
             
-            <div data-role="content" class="view-content">
-                <div>
-                    TESTE
+            <div id="home">
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div style="-webkit-border-radius: 5px;border-radius: 5px;border: 1px solid #bbd8e9;padding: 2px" class="span4">
+                            <span>Ranking Agosto</span>
+                            <div style="clear:both;height:2px"></div>
+                            <div id="VendorRankingByMonthContainer">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -69,21 +60,35 @@
         </div>
 
         <!--Layout-->
+        
         <div data-role="layout" 
              data-id="mobile-tabstrip">
 
             <!--Header-->
             <div data-role="header">
+                <div style="position:fixed;width:140px;height:36px;z-index:1000;margin-top:5px;margin-left:5px">
+                    <div style="padding:3px;width:36px;height:36px;float:left">
+                        <img src="styles/images/app_logo.png" style="width:30px;height:30px"/>
+                    </div>
+                    <div style="float:left;padding:3px;font-size:13px;margin-top: .4em">
+                        <span>Sales Ranking</span>
+                    </div> 
+                </div>
                 <div data-role="navbar">
-                    <a data-align="right" data-role="button" data-click="app.changeSkin">Flat</a>
+                    <a data-align="right" data-role="button" class="hide" data-click="app.changeSkin">Flat</a>
                     <span data-role="view-title"></span>
                 </div>
             </div>
 
             <!--Footer-->
             <div data-role="footer">
+                <div style="position:fixed;width:140px;height:46px;z-index:1000;margin-top:5px;margin-left:5px">
+                    <div style="padding:5px;width:46px;height:46px;float:left">
+                        <img src="styles/images/app_logo.png" style="width:40px;height:40px"/>
+                    </div> 
+                </div>
                 <div data-role="tabstrip">
-                    <a href="#tabstrip-general" data-icon="Home">Geral</a>
+                    <a href="#tabstrip-general" data-icon="home">Geral</a>
                     <a href="#tabstrip-pie-chart" data-icon="globe">Pie Chart</a>
                 </div>
             </div>

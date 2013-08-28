@@ -3,47 +3,37 @@ body, html {
     height:100%;
     width:100%;
 }
-.view-content {
-    text-align:center;
-    padding:1em;
-    margin:0 auto;
-}
-.input-content {
-    position:absolute;
-    bottom:0.3em;
-    left:0;
-    margin:0 auto;
-    width:100%;
-    height:10%;
-}
-.input-content #qrcode-value {
-    display:block;
-    width:85%;
-    margin:50px auto 10px auto;
-    max-width:260px;
-    background-color: #fff;
-    font-style: italic;
-    color: #000;
-    padding: 7px 10px;
-    border-radius: 3px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(180, 180, 180);
-    border-bottom-color: rgb(255, 255, 255);
-    box-shadow: 0 -1px 0 #3C3C3C;
-}
-.input-content #qrcode-generate {
-    display:block;
-    width:80%;
-    margin:0 auto;
-    max-width:250px;
-}
 
-#qrcode > svg{
-    margin:0 auto;
-    top:50%;
-}
 .km-tablet .km-ios .km-navbar .km-view-title{
     color:#000;
     text-shadow: 0 -1px rgba(255,255,255,0.3);
+}
+
+.km-ios .km-view .km-content {
+    background-image: -webkit-gradient(linear,50% 100%,50% 0,color-stop(0, rgba(255,255,255,.2)),color-stop(1, rgba(255,255,255,.8))),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAYAAAASC7TOAAAAGklEQVR4Xm3DMREAAACCQKPYvySeO8MHML0BOrEVLMJmdzAAAAAASUVORK5CYII=);
+    background-image: -moz-linear-gradient(50% 100%,50% 0,rgba(255,255,255,.2),rgba(255,255,255,.8)),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAYAAAASC7TOAAAAGklEQVR4Xm3DMREAAACCQKPYvySeO8MHML0BOrEVLMJmdzAAAAAASUVORK5CYII=);
+    background-image: -ms-linear-gradient(50% 100%,50% 0,rgba(255,255,255,.2),rgba(255,255,255,.8)),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAYAAAASC7TOAAAAGklEQVR4Xm3DMREAAACCQKPYvySeO8MHML0BOrEVLMJmdzAAAAAASUVORK5CYII=);
+    background-repeat: repeat,repeat;
+    background-position: 0 0,0% 0%;
+    background-color: rgb(196, 204, 213);
+}
+.km-android .km-view .km-content {
+    background-image: -webkit-gradient(linear,50% 100%,50% 0,color-stop(0, rgba(255,255,255,.2)),color-stop(1, rgba(255,255,255,.8)));
+    background-image: -moz-linear-gradient(50% 100%,50% 0,rgba(255,255,255,.2),rgba(255,255,255,.8));
+    background-image: -ms-linear-gradient(50% 100%,50% 0,rgba(255,255,255,.2),rgba(255,255,255,.8));
+    background-repeat: repeat;
+    background-position: 0 0;
+    background-color: rgb(0, 0, 0);
+}
+.km-wp .km-view .km-content {
+    background-image: -webkit-gradient(linear,50% 100%,50% 0,color-stop(0, rgba(255,255,255,.2)),color-stop(1, rgba(255,255,255,.8)));
+    background-image: -moz-linear-gradient(50% 100%,50% 0,rgba(255,255,255,.2),rgba(255,255,255,.8));
+    background-image: -ms-linear-gradient(50% 100%,50% 0,rgba(255,255,255,.2),rgba(255,255,255,.8));
+    background-repeat: repeat;
+    background-position: 0 0;
+    background-color: rgb(0, 0, 0);
+}
+
+.km-list > li{
+    background: transparent !important;
 }
