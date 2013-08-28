@@ -9,16 +9,36 @@
         <!--Once the final theme is chosen the redundant css reference should removed-->
         <!--<link href="kendo/styles/kendo.dataviz.flat.min.css" rel="stylesheet" />-->
         <link href="kendo/styles/kendo.dataviz.silver.min.css" rel="stylesheet" />
+        <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
 
         <link href="styles/main.css" rel="stylesheet" />
 
         <script src="cordova.js"></script>        
         <script src="kendo/js/jquery.min.js"></script>
+        
         <script src="kendo/js/kendo.dataviz.mobile.min.js"></script>
-
+                
         <script src="scripts/app.js"></script>
         <script src="scripts/home.js"></script>
         <script src="scripts/pie-chart.js"></script>    
+        <script src="kendo/js/kendo.all.min.js"></script>
+        
+        <style type="text/css">
+
+          #internalSplitView .km-pane,
+          #internalSplitView .km-view > :first-child,
+          #internalSplitView .km-view > :last-child
+          {
+              border-radius: 0;
+              -webkit-border-radius: 0;
+          }
+
+          .km-stretched-view {
+              -webkit-box-orient: vertical;
+              -webkit-flex-direction: column;
+          }
+        </style>
+        
     </head>
     
     <body>
@@ -27,7 +47,16 @@
         <div id="tabstrip-general" data-role="view" data-title="Geral">
             
             <div data-role="content" class="view-content">
-                <div>TESTE</div>
+                <div>
+                <div data-role="km-view km-splitview km-split-horizontal" id="internalSplitView">
+                    <div class="km-pane">
+                        <div data-role="view">TESTE</div>                        
+                    </div>
+                    <div class="km-pane">
+                        <div data-role="view">TESTE 2</div>
+                    </div>
+                </div>
+                </div>
             </div>
             
         </div>
