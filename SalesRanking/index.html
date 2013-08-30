@@ -36,7 +36,7 @@
                 <div class="container-fluid">
                     <div class="row-fluid">
                         <div style="-webkit-border-radius: 5px;border-radius: 5px;border: 1px solid #bbd8e9;padding: 2px" class="span4">
-                            <span>Ranking Agosto</span>
+                            <span style="color:#4D4D4D">Ranking Agosto</span>
                             <div style="clear:both;height:2px"></div>
                             <div id="VendorRankingByMonthContainer">
                                 <ul data-role="listview" id="VendorRankingByMonthListView" data-bind="source: vendorGrowthLastMonthDataSource" 
@@ -55,21 +55,26 @@
                     <div class="row-fluid">
                         <div style="-webkit-border-radius: 5px;border-radius: 5px;border: 1px solid #bbd8e9;padding: 2px" class="span4">
                             <div id="ClientYearGrowthContainer">
-                                <ul data-role="listview" id="ClientYearGrowthListView" data-bind="source: yearGrowthDataSource">
-                                    
+                                <span style="color:#4D4D4D">Crescimento Anual/Cliente</span>
+                                <ul data-role="listview" id="ClientYearGrowthListView" data-bind="source: yearGrowthDataSource"
+                                    data-template="ClientYearGrowthListViewTmpl">
                                 </ul>
                             </div>
                         </div>
                         <div style="-webkit-border-radius: 5px;border-radius: 5px;border: 1px solid #bbd8e9;padding: 2px" class="span4">
                             <div id="ClientMonthAbsolutePerformanceContainer">
-                                <ul data-role="listview" id="ClientMonthAbsolutePerformanceListView" data-bind="source: absoluteRankingLastMonthDataSource">
+                                <span style="color:#4D4D4D">Lucro Mensal/Cliente</span>
+                                <ul data-role="listview" id="ClientMonthAbsolutePerformanceListView" data-bind="source: absoluteRankingLastMonthDataSource"
+                                    data-template="ClientMonthAbsolutePerformanceListViewTmpl">
                                     
                                 </ul>
                             </div>
                         </div>
                         <div style="-webkit-border-radius: 5px;border-radius: 5px;border: 1px solid #bbd8e9;padding: 2px" class="span4">
                             <div id="ClientYearAbsolutePerformanceContainer">
-                                <ul data-role="listview" id="ClientYearAbsolutePerformanceListView" data-bind="source: absoluteRankingDataSource">
+                                <span style="color:#4D4D4D">Lucro Anual/Cliente</span>
+                                <ul data-role="listview" id="ClientYearAbsolutePerformanceListView" data-bind="source: absoluteRankingDataSource"
+                                    data-template="ClientYearAbsolutePerformanceListViewTmpl">
                                     
                                 </ul>
                             </div>
@@ -105,6 +110,19 @@
                 <div><span>Crescimento: #: Growth #%</span></div>
             </div>
         </script>
+        
+        <script id="ClientYearGrowthListViewTmpl" type="text/x-kendo-tmpl">
+            <span style="#= Ranking == 1 ? "font-size:11px;color:green" : "font-size:9px;"#">#: Ranking + "º - " + Client + "  " + Performed + "%" #</span>
+        </script>
+        
+        <script id="ClientMonthAbsolutePerformanceListViewTmpl" type="text/x-kendo-tmpl">
+            <span style="#= Ranking == 1 ? "font-size:11px;color:green" : "font-size:9px;"#">#: Ranking + "º - " + Client + "  " + Sales #</span>
+        </script>
+        
+        <script id="ClientYearAbsolutePerformanceListViewTmpl" type="text/x-kendo-tmpl">
+            <span style="#= Ranking == 1 ? "font-size:11px;color:green" : "font-size:9px;"#">#: Ranking + "º - " + Client + "  " + Sales #</span>
+        </script>
+        
         
         <!-- End Templates -->
         
