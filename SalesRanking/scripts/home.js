@@ -39,6 +39,10 @@
             getData(5, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorLastMonthGrowthRanking?json=true", "vendorGrowthLastMonthDataSource", that);
         },
         
+        initializeViewDesign: function() {
+            app.homeService.viewModel.createClientLastMonthGrowthChart();
+        },
+        
         createClientLastMonthGrowthChart: function () {
             app.homeService.viewModel.drawClientLastMonthGrowthChart();
             app.homeService.viewModel.bindResizeEvent();
