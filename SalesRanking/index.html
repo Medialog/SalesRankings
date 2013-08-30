@@ -97,7 +97,8 @@
             <!-- Popovers -->
                 
             <div id="filter-popover" data-role="popover" data-popup='{"height": "30em", "width": "22em"}'>
-                <div data-role="view" data-title="Vendedores" data-model="app.vendorService.listViewModel">
+                <div data-role="view" data-title="Vendedores" data-model="app.vendorService.listViewModel"
+                    data-show="app.vendorService.listViewModel.bindVendors">
                     <div data-role="header">
                         <div data-role="navbar">
                             <span data-role="view-title"></span>
@@ -176,7 +177,7 @@
                     </div> 
                 </div>
                 <div data-role="navbar" id="vendor-navbar">
-                    <a data-role="button" data-rel="popover" href="#filter-popover" data-click="app.vendorService.listViewModel.bindVendors" data-icon="search" data-align="right"></a>
+                    <a data-role="button" data-rel="popover" href="#filter-popover" data-icon="search" data-align="right"></a>
                     <span data-role="view-title"></span>
                 </div>
             </div>

@@ -42,14 +42,16 @@
     VendorListViewModel = kendo.data.ObservableObject.extend({
         
         vendorsLoaded: false,
+        theView: null,
         
         init: function () {
             var that = this;
             kendo.data.ObservableObject.fn.init.apply(that, []);
         },
         
-        bindVendors: function() {
+        bindVendors: function(e) {
             if(app.vendorService.listViewModel.vendorsLoaded) return;
+            e.view.loader.show();
             var dataSource = new kendo.data.DataSource({
                 transport: {
                     read: {
@@ -78,6 +80,7 @@
                 }
             });
             app.vendorService.listViewModel.vendorsLoaded = true;
+            e.view.loader.hide();
         },
         
         closeFilterPopover: function(e) {
