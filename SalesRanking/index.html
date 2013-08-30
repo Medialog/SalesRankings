@@ -89,33 +89,27 @@
         
         <!-- Vendor View -->
         
-        <div id="tabstrip-vendor" data-layout="vendor-tabstrip" data-role="view" data-title="Vendedor" data-model="app.vendorService.viewModel">
+        <div id="tabstrip-vendor" data-layout="vendor-tabstrip" data-role="view" data-title="Vendedor" data-model="app.vendorService.viewModel"
+            data-show="app.vendorService.viewModel.initializeViewDesign" >
             <div id="vendor-home">
             </div>
             
             <!-- Popovers -->
                 
-            <div id="filter-popover" data-role="popover" data-popup='{"height": "16em", "width": "20em"}'>
-            <div data-role="view" data-title="Vendedores">
-                <div data-role="header">
-                <div data-role="navbar">
-                    <span data-role="view-title"></span>
-                    <a data-role="button" data-align="right" data-click="app.vendorService.viewModel.closeFilterPopover">X</a>
+            <div id="filter-popover" data-role="popover" data-popup='{"height": "30em", "width": "22em"}'>
+                <div data-role="view" data-title="Vendedores" data-model="app.vendorService.listViewModel">
+                    <div data-role="header">
+                        <div data-role="navbar">
+                            <span data-role="view-title"></span>
+                            <a data-role="button" data-align="right" data-click="app.vendorService.listViewModel.closeFilterPopover">X</a>
+                        </div>
+                    </div>
+                    <ul data-role="listview" id="vendorFilterListView" >
+                    </ul>
                 </div>
             </div>
-            <ul data-role="listview" id="vendorFilterListView">
-                <!--<li><label>Isabella Anderson<input type="checkbox"></label></li>
-                <li><label>Josh Anderson<input type="checkbox"></label></li>
-                <li><label>Linda Anderson<input type="checkbox"></label></li>
-                <li><label>Oliver Anderson<input type="checkbox"></label></li>
-                <li><label>James Williams<input type="checkbox"></label></li>
-                <li><label>Barbara Williams<input type="checkbox"></label></li>-->
-            </ul>
-            </div>
-                
+            
             <!-- End Popovers -->
-                
-        </div>
             
         </div>
         
@@ -157,6 +151,9 @@
             <span style="#= Ranking == 1 ? "font-size:11px;color:green" : "font-size:9px;"#">#: Ranking + "º - " + Client + "  " + Sales #</span>
         </script>
         
+        <script id="vendorFilterListViewTmpl" type="text/x-kendo-tmpl">
+            <span style="color:\\#4D4D4D;font-size:12px">#: Name #</span><a data-role="detailbutton" data-icon="action"></a>
+        </script>
         
         <!-- End Templates -->
         
@@ -170,8 +167,16 @@
 
             <!--Header-->
             <div data-role="header">
+                <div style="position:fixed;width:140px;height:36px;z-index:1000;margin-top:5px;margin-left:5px">
+                    <div style="padding:3px;width:36px;height:36px;float:left">
+                        <img src="styles/images/app_logo.png" style="width:30px;height:30px"/>
+                    </div>
+                    <div style="float:left;padding:3px;font-size:13px;margin-top: .4em">
+                        <span style="color:#4D4D4D">Sales Ranking</span>
+                    </div> 
+                </div>
                 <div data-role="navbar">
-                    <a data-role="button" data-rel="popover" href="#filter-popover" data-icon="search" data-align="right"></a>
+                    <a data-role="button" data-rel="popover" href="#filter-popover" data-click="app.vendorService.listViewModel.bindVendors" data-icon="search" data-align="right"></a>
                     <span data-role="view-title"></span>
                 </div>
             </div>
@@ -200,7 +205,7 @@
                         <img src="styles/images/app_logo.png" style="width:30px;height:30px"/>
                     </div>
                     <div style="float:left;padding:3px;font-size:13px;margin-top: .4em">
-                        <span>Sales Ranking</span>
+                        <span style="color:#4D4D4D">Sales Ranking</span>
                     </div> 
                 </div>
                 <div data-role="navbar">

@@ -9,6 +9,11 @@ body, html {
     text-shadow: 0 -1px rgba(255,255,255,0.3);
 }
 
+#filter-popover .km-navbar .km-view-title{
+    color:White;
+    text-shadow: 0 -1px rgba(255,255,255,0.3);
+}
+
 .km-ios .km-view .km-content {
     background-image: -webkit-gradient(linear,50% 100%,50% 0,color-stop(0, rgba(255,255,255,.2)),color-stop(1, rgba(255,255,255,.8))),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAYAAAASC7TOAAAAGklEQVR4Xm3DMREAAACCQKPYvySeO8MHML0BOrEVLMJmdzAAAAAASUVORK5CYII=);
     background-image: -moz-linear-gradient(50% 100%,50% 0,rgba(255,255,255,.2),rgba(255,255,255,.8)),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAABCAYAAAASC7TOAAAAGklEQVR4Xm3DMREAAACCQKPYvySeO8MHML0BOrEVLMJmdzAAAAAASUVORK5CYII=);
