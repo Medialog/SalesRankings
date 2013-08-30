@@ -16,15 +16,6 @@
             viewModel.set(dataSourceToSet, dataSource);
         };
     
-    function touchstart(e){
-        
-    }
-    
-    function navigate(e) {
-        var itemUID = $(e.touch.currentTarget).data("uid");
-        kendo.mobile.application.navigate("#tabstrip-vendor?uid=" + itemUID);
-    }
-    
     VendorViewModel = kendo.data.ObservableObject.extend({
         
         vendorsDataSource: null,
@@ -32,16 +23,18 @@
         init: function () {
             var that = this;
             kendo.data.ObservableObject.fn.init.apply(that, []);
-            
-            //getData(500, "http://localhost/SalesRankingWeb/api/Vendors/List?json=true", "vendorsDataSource", that);
         },
         
-        initializeViewDesign: function() {
-            
+        initializeViewDesign: function(e) {
+            var view = e.view;
         },
         
-        bindVendors: function() {
-           getData(5, "http://localhost/SalesRankingWeb/api/Vendors/List?json=true", "vendorsDataSource", app.vendorService.viewModel);
+        loadData: function(e) {
+            e.view.loader.show();
+            var uid = e.view.params.uid;
+            if(uid)
+                e.view.header.find('[data-role="navbar"]').data('kendoMobileNavBar').title(uid)
+            e.view.loader.hide();
         }
         
     });
@@ -80,8 +73,8 @@
                 enableSwipe: false,
                 tap: function(e){
                     app.vendorService.listViewModel.closeFilterPopover(e);
-                    var itemUID = $(e.touch.currentTarget).data("uid");
-                    kendo.mobile.application.navigate("#tabstrip-vendor?uid=" + itemUID);
+                    var vendorName = $(e.touch.currentTarget).find("span").html();
+                    kendo.mobile.application.navigate("#tabstrip-vendor?uid=" + vendorName);
                 }
             });
             app.vendorService.listViewModel.vendorsLoaded = true;

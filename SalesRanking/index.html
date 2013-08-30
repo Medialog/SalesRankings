@@ -90,7 +90,7 @@
         <!-- Vendor View -->
         
         <div id="tabstrip-vendor" data-layout="vendor-tabstrip" data-role="view" data-title="Vendedor" data-model="app.vendorService.viewModel"
-            data-show="app.vendorService.viewModel.initializeViewDesign" >
+            data-init="app.vendorService.viewModel.initializeViewDesign" data-show="app.vendorService.viewModel.loadData">
             <div id="vendor-home">
             </div>
             
@@ -175,7 +175,7 @@
                         <span style="color:#4D4D4D">Sales Ranking</span>
                     </div> 
                 </div>
-                <div data-role="navbar">
+                <div data-role="navbar" id="vendor-navbar">
                     <a data-role="button" data-rel="popover" href="#filter-popover" data-click="app.vendorService.listViewModel.bindVendors" data-icon="search" data-align="right"></a>
                     <span data-role="view-title"></span>
                 </div>
