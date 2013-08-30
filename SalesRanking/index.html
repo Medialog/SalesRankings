@@ -21,7 +21,7 @@
                 
         <script src="scripts/app.js"></script>
         <script src="scripts/home.js"></script>
-        <script src="scripts/pie-chart.js"></script>    
+        <script src="scripts/vendor.js"></script>  
         
     </head>
     
@@ -87,6 +87,40 @@
         
         <!-- End General -->
         
+        <!-- Vendor View -->
+        
+        <div id="tabstrip-vendor" data-layout="vendor-tabstrip" data-role="view" data-title="Vendedor" data-model="app.vendorService.viewModel">
+            <div id="vendor-home">
+            </div>
+            
+            <!-- Popovers -->
+                
+            <div id="filter-popover" data-role="popover" data-popup='{"height": "16em", "width": "20em"}'>
+            <div data-role="view" data-title="Vendedores">
+                <div data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>
+                    <a data-role="button" data-align="right" data-click="app.vendorService.viewModel.closeFilterPopover">X</a>
+                </div>
+            </div>
+            <ul data-role="listview" id="vendorFilterListView">
+                <li><label>Isabella Anderson<input type="checkbox"></label></li>
+                <li><label>Josh Anderson<input type="checkbox"></label></li>
+                <li><label>Linda Anderson<input type="checkbox"></label></li>
+                <li><label>Oliver Anderson<input type="checkbox"></label></li>
+                <li><label>James Williams<input type="checkbox"></label></li>
+                <li><label>Barbara Williams<input type="checkbox"></label></li>
+            </ul>
+            </div>
+                
+            <!-- End Popovers -->
+                
+        </div>
+            
+        </div>
+        
+        <!-- End Vendor View -->
+        
         <!-- Templates -->
         
         <script id="VendorRankingByMonthContainerTmpl" type="text/x-kendo-tmpl">
@@ -126,63 +160,18 @@
         
         <!-- End Templates -->
         
-        <!-- Popovers -->
+        <!-- Drawers -->
         
-        <div id="popover-vendor" data-role="popover" data-popup='{"height": "16em", "width": "20em"}'>
-            <div data-role="view" data-title="Info">
-                <div data-role="header">
-                <div data-role="navbar">
-                    <span data-role="view-title"></span>
-                    <a data-role="button" data-align="right" data-click="closeParentPopover">Close</a>
-                </div>
-            </div>
-            <ul data-role="listview">
-                <li><label>Isabella Anderson<input type="checkbox"></label></li>
-                <li><label>Josh Anderson<input type="checkbox"></label></li>
-                <li><label>Linda Anderson<input type="checkbox"></label></li>
-                <li><label>Oliver Anderson<input type="checkbox"></label></li>
-                <li><label>James Williams<input type="checkbox"></label></li>
-                <li><label>Barbara Williams<input type="checkbox"></label></li>
-            </ul>
-            </div>
-        </div>
-        
-        <!-- End Popovers -->
-        
-        <!--Pie chart-->
-        
-        <div id="tabstrip-pie-chart"  
-             data-role="view" 
-             data-title="Pie Chart" 
-             data-show="app.pieChart.createPieChart" 
-             data-hide="app.pieChart.unbindResizeEvent" 
-             data-stretch="true">
-
-            <div data-role="content" class="view-content">
-                <div id="pie-chart"></div>
-            </div>
-
-        </div>
-        
-        <!-- End Pie chart -->
+        <!-- End Drawers -->
 
         <!--Layout-->
         
-        <div data-role="layout" 
-             data-id="mobile-tabstrip">
+        <div data-role="layout" data-id="vendor-tabstrip">
 
             <!--Header-->
             <div data-role="header">
-                <div style="position:fixed;width:140px;height:36px;z-index:1000;margin-top:5px;margin-left:5px">
-                    <div style="padding:3px;width:36px;height:36px;float:left">
-                        <img src="styles/images/app_logo.png" style="width:30px;height:30px"/>
-                    </div>
-                    <div style="float:left;padding:3px;font-size:13px;margin-top: .4em">
-                        <span>Sales Ranking</span>
-                    </div> 
-                </div>
                 <div data-role="navbar">
-                    <a data-align="right" data-role="button" class="hide" data-click="app.changeSkin">Flat</a>
+                    <a data-role="button" data-rel="popover" href="#filter-popover" data-icon="search" data-align="right"></a>
                     <span data-role="view-title"></span>
                 </div>
             </div>
@@ -196,7 +185,39 @@
                 </div>
                 <div data-role="tabstrip">
                     <a href="#tabstrip-general" data-icon="home">Geral</a>
-                    <a href="#tabstrip-pie-chart" data-icon="globe">Pie Chart</a>
+                    <a href="#tabstrip-vendor" data-icon="contacts">Vendedor</a>
+                </div>
+            </div>
+
+        </div>
+        
+        <div data-role="layout" data-id="mobile-tabstrip">
+
+            <!--Header-->
+            <div data-role="header">
+                <div style="position:fixed;width:140px;height:36px;z-index:1000;margin-top:5px;margin-left:5px">
+                    <div style="padding:3px;width:36px;height:36px;float:left">
+                        <img src="styles/images/app_logo.png" style="width:30px;height:30px"/>
+                    </div>
+                    <div style="float:left;padding:3px;font-size:13px;margin-top: .4em">
+                        <span>Sales Ranking</span>
+                    </div> 
+                </div>
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>
+                </div>
+            </div>
+
+            <!--Footer-->
+            <div data-role="footer">
+                <div style="position:fixed;width:140px;height:46px;z-index:1000;margin-top:5px;margin-left:5px">
+                    <div style="padding:5px;width:46px;height:46px;float:left">
+                        <img src="styles/images/app_logo.png" style="width:40px;height:40px"/>
+                    </div> 
+                </div>
+                <div data-role="tabstrip">
+                    <a href="#tabstrip-general" data-icon="home">Geral</a>
+                    <a href="#tabstrip-vendor" data-icon="contacts">Vendedor</a>
                 </div>
             </div>
 

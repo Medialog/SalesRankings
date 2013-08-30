@@ -37,3 +37,9 @@ body, html {
 .km-list > li{
     background: transparent !important;
 }
+
+
+.km-drawer-button:before, .km-drawer-button:after { content: "\E077"; }
+.km-contacts:before, .km-contacts:after { content: "\E0E4"; }
+.km-graph:before, .km-graph:after { content: "\E04B"; }
+.km-close-button:before, .km-close-button:after { content: "X"; }
