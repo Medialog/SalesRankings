@@ -30,11 +30,19 @@
         },
         
         loadData: function(e) {
-            e.view.loader.show();
-            var uid = e.view.params.uid;
-            if(uid)
-                e.view.header.find('.view-title-container .viewTitle').text(uid)
-            e.view.loader.hide();
+            try{
+                e.view.loader.show();
+                var uid = e.view.params.uid;
+                if(uid)
+                    e.view.header.find('.view-title-container .viewTitle').text(uid);
+                
+            }
+            catch(exc){
+                   
+            }
+            finally{
+                e.view.loader.hide();
+            }
         }
         
     });
@@ -50,37 +58,42 @@
         },
         
         bindVendors: function(e) {
-            if(app.vendorService.listViewModel.vendorsLoaded) return;
-            e.view.loader.show();
-            var dataSource = new kendo.data.DataSource({
-                transport: {
-                    read: {
-                        url: "data/VendorList.json",//"http://localhost/SalesRankingWeb/api/Vendors/List?json=true",
-                        dataType: "json"
-                    }
-                },
-                change: function() {
-                    /*var data = this.data();
-                    for(var i=0; i< data.length; i++){
+            try{
+                if(app.vendorService.listViewModel.vendorsLoaded) return;
+                e.view.loader.show();
+                var dataSource = new kendo.data.DataSource({
+                    transport: {
+                        read: {
+                            url: "data/VendorList.json",//"http://localhost/SalesRankingWeb/api/Vendors/List?json=true",
+                            dataType: "json"
+                        }
+                    },
+                    change: function() {
+                        /*var data = this.data();
+                        for(var i=0; i< data.length; i++){
                         
-                    }*/
-                }   
-            });
-            dataSource.read();
-            $("#vendorFilterListView").kendoMobileListView({
-                dataSource: dataSource,
-                template: $("#vendorFilterListViewTmpl").html()
-            }).kendoTouch({
-                filter: ">li",
-                enableSwipe: false,
-                tap: function(e){
-                    app.vendorService.listViewModel.closeFilterPopover(e);
-                    var vendorName = $(e.touch.currentTarget).find("span").html();
-                    kendo.mobile.application.navigate("#tabstrip-vendor?uid=" + vendorName);
-                }
-            });
-            app.vendorService.listViewModel.vendorsLoaded = true;
-            e.view.loader.hide();
+                        }*/
+                    }   
+                });
+                dataSource.read();
+                $("#vendorFilterListView").kendoMobileListView({
+                    dataSource: dataSource,
+                    template: $("#vendorFilterListViewTmpl").html()
+                }).kendoTouch({
+                    filter: ">li",
+                    enableSwipe: false,
+                    tap: function(e){
+                        app.vendorService.listViewModel.closeFilterPopover(e);
+                        var vendorName = $(e.touch.currentTarget).find("span").html();
+                        kendo.mobile.application.navigate("#tabstrip-vendor?uid=" + vendorName);
+                    }
+                });
+                app.vendorService.listViewModel.vendorsLoaded = true;    
+            }
+            catch(exc){}
+            finally{
+                e.view.loader.hide();
+            }
         },
         
         closeFilterPopover: function(e) {
