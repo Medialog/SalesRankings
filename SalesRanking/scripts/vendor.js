@@ -33,7 +33,7 @@
             e.view.loader.show();
             var uid = e.view.params.uid;
             if(uid)
-                e.view.header.find('[data-role="navbar"]').data('kendoMobileNavBar').title(uid)
+                e.view.header.find('.view-title-container .viewTitle').text(uid)
             e.view.loader.hide();
         }
         
