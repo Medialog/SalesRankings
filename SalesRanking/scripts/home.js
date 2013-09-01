@@ -28,7 +28,18 @@
             
             kendo.data.ObservableObject.fn.init.apply(that, []);
             
-            getData(5, "http://localhost/SalesRankingWeb/api/Clients/GetClientAbsoluteRanking?json=true", "absoluteRankingDataSource", that);
+            getData(5, "data/GetClientAbsoluteRanking.json", "absoluteRankingDataSource", that);
+            
+            getData(5, "data/GetClientLastMonthAbs.json", "absoluteRankingLastMonthDataSource", that);
+            
+            getData(8, "data/GetClientLastMonthGrowth.json", "lastMonthGrowthDataSource", that);
+            
+            getData(5, "data/ClientRankingByYear.json", "yearGrowthDataSource", that);
+            
+            getData(5, "data/GetVendorLastMonthGrowth.json", "vendorGrowthLastMonthDataSource", that);
+
+            
+            /*getData(5, "http://localhost/SalesRankingWeb/api/Clients/GetClientAbsoluteRanking?json=true", "absoluteRankingDataSource", that);
             
             getData(5, "http://localhost/SalesRankingWeb/api/Clients/GetClientLastMonthAbsoluteRanking?json=true", "absoluteRankingLastMonthDataSource", that);
             
@@ -36,7 +47,7 @@
             
             getData(5, "http://localhost/SalesRankingWeb/api/Clients/ClientRankingByYear?json=true", "yearGrowthDataSource", that);
             
-            getData(5, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorLastMonthGrowthRanking?json=true", "vendorGrowthLastMonthDataSource", that);
+            getData(5, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorLastMonthGrowthRanking?json=true", "vendorGrowthLastMonthDataSource", that);*/
         },
         
         initializeViewDesign: function() {

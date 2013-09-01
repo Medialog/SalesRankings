@@ -55,7 +55,7 @@
             var dataSource = new kendo.data.DataSource({
                 transport: {
                     read: {
-                        url: "../data/VendorList.json",//"http://localhost/SalesRankingWeb/api/Vendors/List?json=true",
+                        url: "data/VendorList.json",//"http://localhost/SalesRankingWeb/api/Vendors/List?json=true",
                         dataType: "json"
                     }
                 },
