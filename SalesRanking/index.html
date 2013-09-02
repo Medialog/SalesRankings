@@ -107,40 +107,56 @@
             <div id="vendor-home">
                 <div class="container-fluid">
                     <div class="row-fluid">
-                        <div class="panel panel-default span6">
-                            <div class="panel-heading">
-                                <span style="color:#4D4D4D">Info</span>
-                            </div>
-                            <div class="panel-body">
-                                <div class="vendorInfoContainer">
-                                    <div class="vendorImg" style="width:50px;height:50px;float:left">
-                                        <img data-bind="attr: { src: vendorImage}" src="styles/images/default.gif" width="50" height="50" />
+                        <div class=" span6">
+                            <div class="row-fluid">
+                                <div class="panel panel-default span12">
+                                    <div class="panel-heading">
+                                        <label>Info</label>
                                     </div>
-                                    <div class="vendorInfo" style="float:left;margin-left:10px;font-size:11px">
-                                        <label class="spanVendorName" style="font-size:11px" data-bind="text: vendorName"></label>
-                                        <br />
-                                        <div>
-                                            <label style="font-size:11px;" class="spanVendorBestClient" data-bind="text: vendorBestClient"></label>    
-                                        </div>
-                                        <br />
-                                        <div>
-                                            <label style="font-size:11px;" class="spanVendorTotalEarned" data-bind="text: vendorTotalEarned"></label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size:11px;" class="spanVendorObjective" data-bind="text: vendorObjective"></label>
+                                    <div class="panel-body">
+                                        <div class="vendorInfoContainer">
+                                            <div class="vendorImg" style="width:50px;height:50px;float:left">
+                                                <img data-bind="attr: { src: vendorImage}" src="styles/images/default.gif" width="50" height="50" />
+                                            </div>
+                                            <div class="vendorInfo" style="float:left;margin-left:10px;font-size:11px">
+                                                <label class="spanVendorName" style="font-size:11px" data-bind="text: vendorName"></label>
+                                                <br />
+                                                <div>
+                                                    <label style="font-size:11px;" class="spanVendorBestClient" data-bind="text: vendorBestClient"></label>    
+                                                </div>
+                                                <br />
+                                                <div>
+                                                    <label style="font-size:11px;" class="spanVendorTotalEarned" data-bind="text: vendorTotalEarned"></label>
+                                                </div>
+                                                <div>
+                                                    <label style="font-size:11px;" class="spanVendorObjective" data-bind="text: vendorObjective"></label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="row-fluid">
+                                <div class="panel panel-default span4">
+                                    <div class="panel-heading">
+                                        <label>Variação Mensal</label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="lastMonthVariationContainer">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default span4"></div>
+                                <div class="panel panel-default span4"></div>
+                            </div>
                         </div>
                         <div class="panel panel-default span6">
-                            <div class="panel-heading">
-                                <span style="color:#4D4D4D">Gráficos</span>
-                            </div>
                             <div class="panel-body">
-                                <div id="vendorclientscolumn-chart"></div>
+                                <div id="vendorclientscolumn-chart" style="height:350px"></div>
                             </div>
                         </div>
+                        
                     </div>                    
                 </div>
             </div>
@@ -171,8 +187,8 @@
         
         <script id="VendorRankingByMonthContainerTmpl" type="text/x-kendo-tmpl">
             <div style="float:left;#= Ranking == 1 ? "font-size:14px" : (Ranking == 2 || Ranking == 3 ? "font-size:14px" : "font-size:14px") #">#: Ranking #º</div>
-            <div style="margin-left:10px;float:left;#= Ranking==1 ? "width:80px;height:80px" : (Ranking==2 || Ranking==3 ? "width:50px;height:50px" : "width:20px;height:20px") #">
-                <img src="styles/images/default.gif" width="#= Ranking==1 ? 80 : (Ranking==2 || Ranking==3 ? 50 : 20)#" height="#= Ranking==1 ? 80 : (Ranking==2 || Ranking==3 ? 50 : 20)#" />
+            <div style="margin-left:10px;float:left;#= Ranking==1 ? "width:80px;" : (Ranking==2 || Ranking==3 ? "width:50px;height:50px" : "width:20px;height:20px") #">
+                <img src="#: vendorImage(Vendor)#" width="#= Ranking==1 ? 80 : (Ranking==2 || Ranking==3 ? 50 : 20)#" />
             </div>
             <div style="float:right">
                 <span style="#:Ranking ==1 ? "color:blue" : (Ranking==2 || Ranking==3 ? "color:green" : "color:red")#" class="position" title="">
@@ -204,7 +220,19 @@
         </script>
         
         <script id="vendorFilterListViewTmpl" type="text/x-kendo-tmpl">
-            <span style="color:\\#4D4D4D;font-size:12px">#: Name #</span><a data-role="detailbutton" data-icon="action"></a>
+            <div>
+                <img src="#: vendorImage(Name)#" width="16" height="16">
+                <span style="color:\\#4D4D4D;font-size:12px">#: Name #</span><a data-role="detailbutton" data-icon="action"></a>
+            </div>
+        </script>
+        
+        <script id="lastMonthVariationTmpl" type="text/x-kendo-tmpl">
+            <div style="font-size:11px">
+                <label style="font-size:15px; #: (MonthSales - LastMonthSales) < 0 ? "color:red" : "color:green" #">#: (MonthSales - LastMonthSales) < 0 ? "▼" 
+                    : ((MonthSales - LastMonthSales) > 0 ? "▲" : "")# #: (MonthSales - LastMonthSales).toFixed(2) #€</label>
+                <label style="font-size:11px">Corrente: #: MonthSales #€</label>
+                <label style="font-size:11px">Anterior: #: LastMonthSales #€</label>
+            </div>
         </script>
         
         <!-- End Templates -->

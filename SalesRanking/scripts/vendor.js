@@ -25,6 +25,7 @@
         vendorTotalEarned: "",
         vendorObjective: "",
         vendorImage: "",
+        lastMonthVariation: "",
         
         init: function () {
             var that = this;
@@ -118,15 +119,18 @@
                     },
                     change: function() {
                         app.vendorService.viewModel.vendorName = this.data()[0].Name;
-                        app.vendorService.viewModel.vendorBestClient = "Melhor Cliente: " + this.data()[0].BestClient;
-                        app.vendorService.viewModel.vendorTotalEarned = "Total Vendas anuais: " + this.data()[0].TotalSales;
+                        app.vendorService.viewModel.vendorBestClient = "Melhor cliente: " + this.data()[0].BestClient;
+                        app.vendorService.viewModel.vendorTotalEarned = "Total vendas anual: " + this.data()[0].TotalSales;
                         app.vendorService.viewModel.vendorObjective = "Objectivo anual: " + this.data()[0].TotalTarget;
                         app.vendorService.viewModel.vendorImage = vendorImage(app.vendorService.viewModel.vendorName);
+                        var lastMonthVariationTmpl = kendo.template($("#lastMonthVariationTmpl").html());
+                        $(".lastMonthVariationContainer").html(lastMonthVariationTmpl({MonthSales: this.data()[0].MonthSales, LastMonthSales: this.data()[0].LastMonthSales}));
                         kendo.bind($(".vendorInfo .spanVendorName"), app.vendorService.viewModel);
                         kendo.bind($(".vendorInfo .spanVendorBestClient"), app.vendorService.viewModel);
                         kendo.bind($(".vendorInfo .spanVendorTotalEarned"), app.vendorService.viewModel);
                         kendo.bind($(".vendorInfo .spanVendorObjective"), app.vendorService.viewModel);
                         kendo.bind($(".vendorInfoContainer .vendorImg"), app.vendorService.viewModel);
+                        kendo.bind($(".lastMonthVariation"), app.vendorService.viewModel);
                         getData(6, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorLastMonthGrowthRankingByClient?vendorName=" + this.data()[0].Name,
                             "lastMonthGrowthDataSourceByClient", app.vendorService.viewModel);                        
                         app.vendorService.viewModel.createLastMonthGrowthChart();

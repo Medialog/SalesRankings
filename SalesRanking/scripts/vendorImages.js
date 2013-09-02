@@ -1,8 +1,8 @@
  
     var vendorsWithImages = [
-        {vendor:"Abertura De Clientes", image:"styles/images/avatars/1.jpg"},
+        {vendor:"Abertura De Clientes", image:"styles/images/avatars/3.jpg"},
         {vendor:"Rita Pereira", image:"styles/images/avatars/4.jpg"},
-        {vendor:"Joana De Fatima Goncalves Pereira", image:"styles/images/avatars/3.jpg"},
+        {vendor:"Joana De Fatima Goncalves Pereira", image:"styles/images/avatars/1.jpg"},
         {vendor:"Olga Alves", image:"styles/images/avatars/6.jpg"},
         {vendor:"Artur Miguel Guedes Da Costa Dias Tripa", image:"styles/images/avatars/2.jpg"},
         {vendor:"Alfredo Matias Carvalho", image:"styles/images/avatars/daniel.jpg"},
