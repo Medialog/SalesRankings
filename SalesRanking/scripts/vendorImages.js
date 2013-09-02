@@ -21,8 +21,8 @@
 
     function getTrophyImage(ranking) {
         if(ranking == 1)
-            return "styles/images/gold.png";
+            return "styles/images/Trofeu_1.png";
         if(ranking== 2)
-            return "styles/images/silver.png";
-        return "styles/images/plate.png";
+            return "styles/images/Trofeu_2.png";
+        return "styles/images/Trofeu_3.png";
     }

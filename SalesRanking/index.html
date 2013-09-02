@@ -271,34 +271,45 @@
         <script id="rankingsByVendorContainerTmpl" type="text/x-kendo-tmpl">
             <div>
                 <label style="font-size:11px;float:left;">Vendas: </label>
-                <div style="float:left;margin-left:10px;width: 20px;height: 20px;">
+                <div style="margin-left:10px;height: 20px;float:left">
                     <label style="font-size:11px;">#: OverallRankBySales #º</label>
-                    <img src="#: getTrophyImage(OverallRankBySales) #"
-                        width="20" height="20" style="margin-top: -30px;margin-left:-5px;#= OverallRankBySales > 3 ? "display:none" : "" #" />
                 </div>
+                <div style="float:left">
+                    <img src="#: getTrophyImage(OverallRankBySales) #"
+                        width="14" height="14" style="#= OverallRankBySales > 3 ? "display:none" : "" #" />    
+               </div>
             </div>
+            <div style="clear:both"></div>
             <div>
                 <label style="font-size:11px;float:left;">Vendas/Objectivo: </label>
-                <div style="float:left;margin-left:10px;width: 20px;height: 20px;">
-                    <label style="font-size:11px;">#: OverallRankByTarget #º</label>
+                <div style="float:left;margin-left:10px;height: 20px;float:left">
+                    <label style="font-size:11px;">#: OverallRankByTarget #º</label> 
+                </div>
+                <div style="float:left">
                     <img src="#: getTrophyImage(OverallRankByTarget) #"
-                        width="20" height="20" style="margin-top: -30px;margin-left:-5px;#= OverallRankByTarget > 3 ? "display:none" : "" #" />
+                        width="14" height="14" style="#= OverallRankByTarget > 3 ? "display:none" : "" #" />
                 </div>
             </div>
+            <div style="clear:both"></div>
             <div>
                 <label style="font-size:11px;float:left;">Vendas mês: </label>
-                <div style="float:left;margin-left:10px;width: 20px;height: 20px;">
+                <div style="float:left;margin-left:10px;height: 20px;float:left">
                     <label style="font-size:11px;">#: OverallRankLastMonth #º</label>
+                </div>
+                <div style="float:left">
                     <img src="#: getTrophyImage(OverallRankLastMonth) #" 
-                        width="20" height="20" style="margin-top: -30px;margin-left:-5px;#= OverallRankLastMonth > 3 ? "display:none" : "" #" />
+                        width="14" height="14" style="#= OverallRankLastMonth > 3 ? "display:none" : "" #" />
                 </div>
             </div>
+            <div style="clear:both"></div>
             <div>
                 <label style="font-size:11px;float:left;">Crescimento mês: </label>
-                <div style="float:left;margin-left:10px;width: 20px;height: 20px;">
+                <div style="float:left;margin-left:10px;height: 20px;float:left">
                     <label style="font-size:11px;">#: GrowthRankLastMonthByTarget #º</label>
-                    <img src="GrowthRankLastMonthByTarget" 
-                        width="20" height="20" style="margin-top: -30px;margin-left:-5px;#= GrowthRankLastMonthByTarget > 3 ? "display:none" : "" #" />
+                </div>
+                <div style="float:left">
+                    <img src="#: getTrophyImage(GrowthRankLastMonthByTarget) #" 
+                        width="14" height="14" style="#= GrowthRankLastMonthByTarget > 3 ? "display:none" : "" #" />
                 </div>
             </div>
         </script>
