@@ -131,6 +131,13 @@
                             MonthRankByTarget: this.data()[0].MonthRankByTarget,
                             PrevMonthRankByTarget: this.data()[0].PrevMonthRankByTarget
                         }));
+                        var rankingsByVendorContainerTmpl = kendo.template($("#rankingsByVendorContainerTmpl").html());
+                        $(".rankingsByVendorContainer").html(rankingsByVendorContainerTmpl({
+                            OverallRankBySales: this.data()[0].OverallRankBySales,
+                            OverallRankByTarget: this.data()[0].OverallRankByTarget,
+                            OverallRankLastMonth: this.data()[0].OverallRankLastMonth,
+                            GrowthRankLastMonthByTarget: this.data()[0].GrowthRankLastMonthByTarget
+                        }));
                         kendo.bind($(".vendorInfo .spanVendorName"), app.vendorService.viewModel);
                         kendo.bind($(".vendorInfo .spanVendorBestClient"), app.vendorService.viewModel);
                         kendo.bind($(".vendorInfo .spanVendorTotalEarned"), app.vendorService.viewModel);

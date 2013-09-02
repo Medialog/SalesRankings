@@ -148,7 +148,6 @@
                                     </div>
                                     <div class="panel-body">
                                         <div class="lastMonthVariationContainer">
-                                            
                                         </div>
                                     </div>
                                 </div>
@@ -158,11 +157,18 @@
                                     </div>
                                     <div class="panel-body">
                                         <div class="monthRankingByVendorVariationContainer">
-                                            
                                         </div>
                                     </div>
                                 </div>
-                                <div class="panel panel-default span4"></div>
+                                <div class="panel panel-default span4">
+                                    <div class="panel-heading">
+                                        <label>Rankings</label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="rankingsByVendorContainer">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="panel panel-default span6">
@@ -259,6 +265,29 @@
                     ((MonthRankByTarget - PrevMonthRankByTarget) == 0 ? "manteve a mesma posição em relação ao mês anterior" : "posições perdidas em relação ao mês anterior") #</label>
                 <label style="font-size:11px">Corrente: #: MonthRankByTarget #º</label>
                 <label style="font-size:11px">Anterior: #: PrevMonthRankByTarget #º</label>
+            </div>
+        </script>
+        
+        <script id="rankingsByVendorContainerTmpl" type="text/x-kendo-tmpl">
+            <div>
+                <label style="font-size:11px;float:left">Total vendas: #: OverallRankBySales #º</label>
+                <div style="float:left;margin-left:5px;#= OverallRankBySales > 3 ? "display:none" : "" #">
+                    <img src="#: OverallRankBySales == 1 ? "styles/images/gold.png" : (OverallRankBySales == 2 ? "styles/images/silver.png" : "styles/images/plate.png") #" 
+                        width="20" height="20" />
+                </div>
+            </div>
+            <div>
+                <label style="font-size:11px;float:left;">Total vendas/Objectivo: #: OverallRankByTarget #º</label>
+                <div style="float:left;margin-left:5px;#= OverallRankByTarget > 3 ? "display:none" : "" #">
+                    <img src="#: OverallRankByTarget == 1 ? "styles/images/gold.png" : (OverallRankByTarget == 2 ? "styles/images/silver.png" : "styles/images/plate.png") #" 
+                        width="20" height="20" />
+                </div>
+            </div>
+            <div>
+                <label style="font-size:11px">Vendas último mês: #: OverallRankLastMonth #º</label>
+            </div>
+            <div>
+                <label style="font-size:11px">Crescimento último mês: #: GrowthRankLastMonthByTarget #º</label>
             </div>
         </script>
         
