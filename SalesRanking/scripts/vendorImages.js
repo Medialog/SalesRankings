@@ -18,3 +18,11 @@
             return item[0].image;
         return "styles/images/default.gif";
     }
+
+    function getTrophyImage(ranking) {
+        if(ranking == 1)
+            return "styles/images/gold.png";
+        if(ranking== 2)
+            return "styles/images/silver.png";
+        return "styles/images/plate.png";
+    }
