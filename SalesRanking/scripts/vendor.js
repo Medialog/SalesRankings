@@ -238,7 +238,7 @@
                 var dataSource = new kendo.data.DataSource({
                     transport: {
                         read: {
-                            url: "http://localhost/SalesRankingWeb/api/Vendors/Details?json=true&vendorName=" + uid,
+                            url: "data/Detail/" + getFileByUid(uid) + ".json", //"http://localhost/SalesRankingWeb/api/Vendors/Details?json=true&vendorName=" + uid,
                             dataType: "json"
                         }
                     },
@@ -271,15 +271,21 @@
                         kendo.bind($(".vendorInfoContainer .vendorImg"), app.vendorService.viewModel);
                         kendo.bind($(".lastMonthVariation"), app.vendorService.viewModel);
                         
-                        getData(6, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorLastMonthGrowthRankingByClient?vendorName=" + this.data()[0].Name,
-                            "lastMonthGrowthDataSourceByClient", app.vendorService.viewModel);                        
+                        //getData(6, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorLastMonthGrowthRankingByClient?json=true&vendorName=" + this.data()[0].Name,
+                        //    "lastMonthGrowthDataSourceByClient", app.vendorService.viewModel);
+                        getData(6, "data/VendorClientsChart/" +  getFileByUid(this.data()[0].Name) + ".json",
+                            "lastMonthGrowthDataSourceByClient", app.vendorService.viewModel);  
                         app.vendorService.viewModel.createLastMonthGrowthChart();
                         
-                        getData(50, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorRankingInMonth?vendorName=" + this.data()[0].Name,
+                        //getData(50, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorRankingInMonth?json=true&vendorName=" + this.data()[0].Name,
+                        //    "vendorRankingInMonthDataSource", app.vendorService.viewModel);
+                        getData(50, "data/VendorRankingChart/" + getFileByUid(this.data()[0].Name) + ".json",
                             "vendorRankingInMonthDataSource", app.vendorService.viewModel);
                         app.vendorService.viewModel.createVendorRankingInMonthChart();
                         
-                        getData(50, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorLastMonthGrowthRanking?vendorName=" + this.data()[0].Name,
+                        //getData(50, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorLastMonthGrowthRanking?json=true&vendorName=" + this.data()[0].Name,
+                        //    "vendorGrowthInMonthDataSource", app.vendorService.viewModel);
+                        getData(50, "data/VendorGrowthRankingChart/" + getFileByUid(this.data()[0].Name) + ".json",
                             "vendorGrowthInMonthDataSource", app.vendorService.viewModel);
                         app.vendorService.viewModel.createVendorGrowthRankingInMonthChart();
                         
