@@ -108,15 +108,37 @@
                     <div class="row-fluid">
                         <div class="panel panel-default span6">
                             <div class="panel-heading">
-                                <span style="color:#4D4D4D">Posição</span>
+                                <span style="color:#4D4D4D">Info</span>
                             </div>
-                            <div class="panel-body"></div>
+                            <div class="panel-body">
+                                <div class="vendorInfoContainer">
+                                    <div class="vendorImg" style="width:50px;height:50px;float:left">
+                                        <img src="styles/images/default.gif" width="50" height="50" />
+                                    </div>
+                                    <div class="vendorInfo" style="float:left;margin-left:10px;font-size:11px">
+                                        <label class="spanVendorName" style="font-size:11px" data-bind="text: vendorName"></label>
+                                        <br />
+                                        <div>
+                                            <label style="font-size:11px;" class="spanVendorBestClient" data-bind="text: vendorBestClient"></label>    
+                                        </div>
+                                        <br />
+                                        <div>
+                                            <label style="font-size:11px;" class="spanVendorTotalEarned" data-bind="text: vendorTotalEarned"></label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size:11px;" class="spanVendorObjective" data-bind="text: vendorObjective"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="panel panel-default span6">
                             <div class="panel-heading">
                                 <span style="color:#4D4D4D">Gráficos</span>
                             </div>
-                            <div class="panel-body"></div>
+                            <div class="panel-body">
+                                <div id="vendorclientscolumn-chart"></div>
+                            </div>
                         </div>
                     </div>                    
                 </div>
