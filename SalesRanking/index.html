@@ -58,7 +58,7 @@
                     <div class="row-fluid">
                         <div class="panel panel-default span4">
                             <div class="panel-heading">
-                                <span style="color:#4D4D4D">Crescimento Anual/Cliente</span>
+                                <label>Crescimento Anual/Cliente</label>
                             </div>
                             <div class="panel-body">
                                 <div id="ClientYearGrowthContainer">
@@ -70,7 +70,7 @@
                         </div>
                         <div class="panel panel-default span4">
                             <div class="panel-heading">
-                                <span style="color:#4D4D4D">Lucro Mensal/Cliente</span>
+                                <label>Lucro Mensal/Cliente</label>
                             </div>
                             <div class="panel-body">       
                                 <div id="ClientMonthAbsolutePerformanceContainer">
@@ -82,7 +82,7 @@
                         </div>
                         <div class="panel panel-default span4">
                             <div class="panel-heading">
-                                <span style="color:#4D4D4D">Lucro Anual/Cliente</span>
+                                <label>Lucro Anual/Cliente</label>
                             </div>
                             <div class="panel-body">
                                 <div id="ClientYearAbsolutePerformanceContainer">
@@ -191,9 +191,9 @@
                 <img src="#: vendorImage(Vendor)#" width="#= Ranking==1 ? 80 : (Ranking==2 || Ranking==3 ? 50 : 20)#" />
             </div>
             <div style="float:right">
-                <span style="#:Ranking ==1 ? "color:blue" : (Ranking==2 || Ranking==3 ? "color:green" : "color:red")#" class="position" title="">
+                <label title="#:Ranking == 1 ? "Manteve o ranking do mês anterior" : (Ranking==2 || Ranking==3 ? "Subiu 2 posições no ranking": (Ranking==4 ? "Desceu 2 posições no ranking" : "Desceu 3 posições no ranking")) #" style="#:Ranking ==1 ? "color:blue" : (Ranking==2 || Ranking==3 ? "color:green" : "color:red")#" class="position" title="">
                     #:Ranking == 1 ? "=" : (Ranking==2 || Ranking==3 ? "▲ 2": (Ranking==4 ? "▼ 2" : "▼ 3")) #
-                </span>
+                </label>
                 <a class="hide" data-rel="popover" id="info-popover-a" href="\\#popover-vendor" data-role="button">+</a>
             </div>
             <div style="background-image:url(styles/images/gold.png);width:32px;height:32px;position:fixed;margin-top:0px;margin-left:-10px;#= Ranking != 1 ? "display:none" : "" #"></div>
@@ -201,28 +201,28 @@
             <div style="background-image:url(styles/images/plate.png);width:32px;height:32px;position:fixed;margin-top:0px;margin-left:-10px;#= Ranking != 3 ? "display:none" : "" #"></div>
             <div style="clear:both"></div>
             <div style="float:left;#= Ranking==1 ? "font-size:12px;margin-left:12px" : (Ranking==2 || Ranking==3 ? "font-size:10px;margin-left:3px" : "font-size:10px;margin-left:3px") #">
-                <div><span>#: Vendor #</span></div>
-                <div><span>Clientes: #: Clients #</span></div>
-                <div><span>Crescimento: #: Growth #%</span></div>
+                <div><label style="font-size:11px">#: Vendor #</label></div>
+                <div><label style="font-size:11px">Clientes: #: Clients #</label></div>
+                <div><label style="font-size:11px">Crescimento: #: Growth #%</label></div>
             </div>
         </script>
         
         <script id="ClientYearGrowthListViewTmpl" type="text/x-kendo-tmpl">
-            <span style="#= Ranking == 1 ? "font-size:11px;color:green" : "font-size:9px;"#">#: Ranking + "º - " + Client + "  " + Performed + "%" #</span>
+            <label style="#= Ranking == 1 ? "font-size:11px;color:green" : "font-size:9px;"#">#: Ranking + "º - " + Client + "  " + Performed + "%" #</label>
         </script>
         
         <script id="ClientMonthAbsolutePerformanceListViewTmpl" type="text/x-kendo-tmpl">
-            <span style="#= Ranking == 1 ? "font-size:11px;color:green" : "font-size:9px;"#">#: Ranking + "º - " + Client + "  " + Sales #</span>
+            <label style="#= Ranking == 1 ? "font-size:11px;color:green" : "font-size:9px;"#">#: Ranking + "º - " + Client + "  " + Sales #</label>
         </script>
         
         <script id="ClientYearAbsolutePerformanceListViewTmpl" type="text/x-kendo-tmpl">
-            <span style="#= Ranking == 1 ? "font-size:11px;color:green" : "font-size:9px;"#">#: Ranking + "º - " + Client + "  " + Sales #</span>
+            <label style="#= Ranking == 1 ? "font-size:11px;color:green" : "font-size:9px;"#">#: Ranking + "º - " + Client + "  " + Sales #</label>
         </script>
         
         <script id="vendorFilterListViewTmpl" type="text/x-kendo-tmpl">
             <div>
                 <img src="#: vendorImage(Name)#" width="16" height="16">
-                <span style="color:\\#4D4D4D;font-size:12px">#: Name #</span><a data-role="detailbutton" data-icon="action"></a>
+                <label style="color:\\#4D4D4D;font-size:11px">#: Name #</label><a data-role="detailbutton" data-icon="action"></a>
             </div>
         </script>
         

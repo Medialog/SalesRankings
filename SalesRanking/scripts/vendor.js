@@ -25,7 +25,6 @@
         vendorTotalEarned: "",
         vendorObjective: "",
         vendorImage: "",
-        lastMonthVariation: "",
         
         init: function () {
             var that = this;
