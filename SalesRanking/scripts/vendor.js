@@ -20,6 +20,8 @@
         
         vendorsDataSource: null,
         lastMonthGrowthDataSourceByClient: null,
+        vendorRankingInMonthDataSource: null,
+        vendorGrowthInMonthDataSource: null,
         vendorName: "",
         vendorBestClient: "",
         vendorTotalEarned: "",
@@ -38,6 +40,16 @@
         createLastMonthGrowthChart: function() {
             app.vendorService.viewModel.drawLastMonthGrowthChart();
             app.vendorService.viewModel.bindResizeEvent();  
+        },
+        
+        createVendorRankingInMonthChart: function() {
+            app.vendorService.viewModel.drawVendorRankingInMonthChart(); 
+            app.vendorService.viewModel.bindVendorRankingResizeEvent();
+        },
+        
+        createVendorGrowthRankingInMonthChart: function() {
+            app.vendorService.viewModel.drawVendorGrowthRankingInMonthChart(); 
+            app.vendorService.viewModel.bindVendorGrowthRankingResizeEvent();
         },
         
         drawLastMonthGrowthChart: function() {
@@ -92,12 +104,126 @@
             }).data("kendoChart");
         },
         
+        drawVendorRankingInMonthChart: function() {
+            var $vendorRankingInMonthColumnChart = $("#vendorrankingcolumn-chart");
+
+            vendorRankingColumnChart = $vendorRankingInMonthColumnChart.kendoChart({
+                dataSource: this.vendorRankingInMonthDataSource,
+                theme: app.chartsTheme,
+                renderAs: "svg",
+                title: {
+                    position: "top",
+                    text: "Ranking Venda Último Mês"
+                },
+                legend: {
+                    position: "bottom"
+                },
+                chartArea: {
+                    background: ""
+                },
+                seriesDefaults: {
+                    type: "column"
+                },
+                series: [
+                    {
+                        field: "Performed",
+                        colorField: "UserColor"
+                    }
+                ],
+                categoryAxis: {
+                    field: "Vendor",
+                    majorGridLines: {
+                        visible: false
+                    },
+                    labels:{
+                        template: '#: data.value.toString().length > 25 ? data.value.substring(0,25) + "..." : data.value #',
+                        rotation: -90
+                    }
+                },
+                valueAxis: {
+                    labels: {
+                        template: '#: data.value # %'
+                    },
+                    line: {
+                        visible: false
+                    }
+                },
+                tooltip: {
+                    visible: true,
+                    template: kendo.template('#: value #%. Atingido #: dataItem.Achieved # de #: dataItem.Target #')
+                },
+                
+            }).data("kendoChart");
+        },
+
+        drawVendorGrowthRankingInMonthChart: function() {
+            var $vendorGrowthRankingInMonthColumnChart = $("#vendorgrowthrankingcolumn-chart");
+
+            vendorGrowthRankingColumnChart = $vendorGrowthRankingInMonthColumnChart.kendoChart({
+                dataSource: this.vendorGrowthInMonthDataSource,
+                theme: app.chartsTheme,
+                renderAs: "svg",
+                title: {
+                    position: "top",
+                    text: "Crescimento Último Mês"
+                },
+                legend: {
+                    position: "bottom"
+                },
+                chartArea: {
+                    background: ""
+                },
+                seriesDefaults: {
+                    type: "column"
+                },
+                series: [
+                    {
+                        field: "Growth",
+                        colorField: "UserColor"
+                    }
+                ],
+                categoryAxis: {
+                    field: "Vendor",
+                    majorGridLines: {
+                        visible: false
+                    },
+                    labels:{
+                        template: '#: data.value.toString().length > 25 ? data.value.substring(0,25) + "..." : data.value #',
+                        rotation: -90
+                    }
+                },
+                valueAxis: {
+                    labels: {
+                        template: '#: data.value # %'
+                    },
+                    line: {
+                        visible: false
+                    }
+                },
+                tooltip: {
+                    visible: true,
+                    template: kendo.template('#: value #%')
+                },
+                
+            }).data("kendoChart");
+        },
+        
         bindResizeEvent: function () {
             $(window).on("resize.clientsColumnChart", $.proxy(app.vendorService.viewModel.drawLastMonthGrowthChart, app.vendorService.viewModel));
+        },
+        
+        bindVendorRankingResizeEvent: function () {
+            $(window).on("resize.vendorRankingColumnChart", $.proxy(app.vendorService.viewModel.drawVendorRankingInMonthChart, app.vendorService.viewModel));
+        },
+        
+        bindVendorGrowthRankingResizeEvent: function () {
+            $(window).on("resize.vendorGrowthRankingColumnChart", $.proxy(app.vendorService.viewModel.drawVendorGrowthRankingInMonthChart, app.vendorService.viewModel));
         },
 
         unbindResizeEvent: function () {
             $(window).off("resize.clientsColumnChart");
+            $(window).off("resize.vendorRankingColumnChart");
+            $(window).off("resize.vendorGrowthRankingColumnChart");
         },
         
         loadData: function(e) {
@@ -144,9 +270,19 @@
                         kendo.bind($(".vendorInfo .spanVendorObjective"), app.vendorService.viewModel);
                         kendo.bind($(".vendorInfoContainer .vendorImg"), app.vendorService.viewModel);
                         kendo.bind($(".lastMonthVariation"), app.vendorService.viewModel);
+                        
                         getData(6, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorLastMonthGrowthRankingByClient?vendorName=" + this.data()[0].Name,
                             "lastMonthGrowthDataSourceByClient", app.vendorService.viewModel);                        
                         app.vendorService.viewModel.createLastMonthGrowthChart();
+                        
+                        getData(50, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorRankingInMonth?vendorName=" + this.data()[0].Name,
+                            "vendorRankingInMonthDataSource", app.vendorService.viewModel);
+                        app.vendorService.viewModel.createVendorRankingInMonthChart();
+                        
+                        getData(50, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorLastMonthGrowthRanking?vendorName=" + this.data()[0].Name,
+                            "vendorGrowthInMonthDataSource", app.vendorService.viewModel);
+                        app.vendorService.viewModel.createVendorGrowthRankingInMonthChart();
+                        
                     }
                 });
                 dataSource.read();
