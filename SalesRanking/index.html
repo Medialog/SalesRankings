@@ -152,7 +152,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="panel panel-default span4"></div>
+                                <div class="panel panel-default span4">
+                                    <div class="panel-heading">
+                                        <label>Valor Mensal vs Objectivo</label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="monthRankingByVendorVariationContainer">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="panel panel-default span4"></div>
                             </div>
                         </div>
@@ -235,11 +244,24 @@
         <script id="lastMonthVariationTmpl" type="text/x-kendo-tmpl">
             <div style="font-size:11px">
                 <label style="font-size:15px; #: (MonthSales - LastMonthSales) < 0 ? "color:red" : "color:green" #">#: (MonthSales - LastMonthSales) < 0 ? "▼" 
-                    : ((MonthSales - LastMonthSales) > 0 ? "▲" : "")# #: (MonthSales - LastMonthSales).toFixed(2) #€</label>
+                    : ((MonthSales - LastMonthSales) > 0 ? "▲" : "=")# #: (MonthSales - LastMonthSales).toFixed(2) #€</label>
                 <label style="font-size:11px">Corrente: #: MonthSales #€</label>
                 <label style="font-size:11px">Anterior: #: LastMonthSales #€</label>
             </div>
         </script>
+        
+        <script id="monthGrowthRankingVariationTmpl" type="text/x-kendo-tmpl">
+            <div style="font-size:11px">
+                <label style="font-size:15px; #: (MonthRankByTarget - PrevMonthRankByTarget) > 0 ? "color:red" : ( (MonthRankByTarget - PrevMonthRankByTarget) == 0 ? "color:blue" : "color:green") #">#: (MonthRankByTarget - PrevMonthRankByTarget) > 0 ? "▼" 
+                    : ((MonthRankByTarget - PrevMonthRankByTarget) < 0 ? "▲" : "=")# #: Math.abs(MonthRankByTarget - PrevMonthRankByTarget) #
+                </label>
+                <label style="font-size:11px">#: (MonthRankByTarget - PrevMonthRankByTarget) < 0 ? " posições ganhas em relação ao mês anterior" : 
+                    ((MonthRankByTarget - PrevMonthRankByTarget) == 0 ? "manteve a mesma posição em relação ao mês anterior" : "posições perdidas em relação ao mês anterior") #</label>
+                <label style="font-size:11px">Corrente: #: MonthRankByTarget #º</label>
+                <label style="font-size:11px">Anterior: #: PrevMonthRankByTarget #º</label>
+            </div>
+        </script>
+        
         
         <!-- End Templates -->
         

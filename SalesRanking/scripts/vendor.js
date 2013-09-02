@@ -123,7 +123,14 @@
                         app.vendorService.viewModel.vendorObjective = "Objectivo anual: " + this.data()[0].TotalTarget + "€";
                         app.vendorService.viewModel.vendorImage = vendorImage(app.vendorService.viewModel.vendorName);
                         var lastMonthVariationTmpl = kendo.template($("#lastMonthVariationTmpl").html());
-                        $(".lastMonthVariationContainer").html(lastMonthVariationTmpl({MonthSales: this.data()[0].MonthSales, LastMonthSales: this.data()[0].LastMonthSales}));
+                        $(".lastMonthVariationContainer").html(lastMonthVariationTmpl({
+                            MonthSales: this.data()[0].MonthSales, LastMonthSales: this.data()[0].LastMonthSales
+                        }));
+                        var monthGrowthRankingVariationTmpl = kendo.template($("#monthGrowthRankingVariationTmpl").html());
+                        $(".monthRankingByVendorVariationContainer").html(monthGrowthRankingVariationTmpl({
+                            MonthRankByTarget: this.data()[0].MonthRankByTarget,
+                            PrevMonthRankByTarget: this.data()[0].PrevMonthRankByTarget
+                        }));
                         kendo.bind($(".vendorInfo .spanVendorName"), app.vendorService.viewModel);
                         kendo.bind($(".vendorInfo .spanVendorBestClient"), app.vendorService.viewModel);
                         kendo.bind($(".vendorInfo .spanVendorTotalEarned"), app.vendorService.viewModel);
