@@ -192,18 +192,19 @@
         
         <script id="VendorRankingByMonthContainerTmpl" type="text/x-kendo-tmpl">
             <div style="float:left;#= Ranking == 1 ? "font-size:14px" : (Ranking == 2 || Ranking == 3 ? "font-size:14px" : "font-size:14px") #">#: Ranking #º</div>
-            <div style="margin-left:10px;float:left;#= Ranking<= 3 ? "width:50px;height:50px" : "width:20px;height:20px" #">
-                <img src="#: vendorImage(Vendor)#" width="#= Ranking<= 3 ? 50 : 20#" />
-            </div>
-            <div style="float:right">
-                <label title="#:Ranking == 1 ? "Manteve o ranking do mês anterior" : (Ranking==2 || Ranking==3 ? "Subiu 2 posições no ranking": (Ranking==4 ? "Desceu 2 posições no ranking" : "Desceu 3 posições no ranking")) #" style="#:Ranking ==1 ? "color:blue" : (Ranking==2 || Ranking==3 ? "color:green" : "color:red")#" class="position" title="">
-                    #:Ranking == 1 ? "=" : (Ranking==2 || Ranking==3 ? "▲ 2": (Ranking==4 ? "▼ 2" : "▼ 3")) #
-                </label>
-                <a title="Detalhe do vendedor" id="info-vendor" href="\\#tabstrip-vendor?uid=#: Vendor#" data-role="button" style="font-size: 0.6em" data-icon="details">Mais Info</a>
+            <div style="margin-left:10px;float:left;#= Ranking<= 3 ? "width:50px;height:50px" : "width:30px;height:30px" #">
+                <img src="#: vendorImage(Vendor)#" width="#= Ranking<= 3 ? 50 : 30#" />
             </div>
             <div style="background-image:url(styles/images/gold.png);width:32px;height:32px;position:fixed;margin-top:0px;margin-left:-10px;#= Ranking != 1 ? "display:none" : "" #"></div>
             <div style="background-image:url(styles/images/silver.png);width:32px;height:32px;position:fixed;margin-top:0px;margin-left:-10px;#= Ranking != 2 ? "display:none" : "" #"></div>
             <div style="background-image:url(styles/images/plate.png);width:32px;height:32px;position:fixed;margin-top:0px;margin-left:-10px;#= Ranking != 3 ? "display:none" : "" #"></div>
+            
+            <div style="margin-left:80px">
+                <label title="#:Ranking == 1 ? "Manteve o ranking do mês anterior" : (Ranking==2 || Ranking==3 ? "Subiu 2 posições no ranking": (Ranking==4 ? "Desceu 2 posições no ranking" : "Desceu 3 posições no ranking")) #" style="#:Ranking ==1 ? "color:blue" : (Ranking==2 || Ranking==3 ? "color:green" : "color:red")#" class="position" title="">
+                    #:Ranking == 1 ? "=" : (Ranking==2 || Ranking==3 ? "▲ 2": (Ranking==4 ? "▼ 2" : "▼ 3")) #
+                </label>
+                <a title="Detalhe do vendedor" id="info-vendor" href="\\#tabstrip-vendor?uid=#: Vendor#" data-role="button" style="font-size: 0.6em" data-icon="details"></a>
+            </div>
             <div style="clear:both"></div>
             <div style="float:left;#= Ranking==1 ? "font-size:12px;margin-left:12px" : (Ranking==2 || Ranking==3 ? "font-size:10px;margin-left:3px" : "font-size:10px;margin-left:3px") #">
                 <div><label style="font-size:11px">#: Vendor #</label></div>

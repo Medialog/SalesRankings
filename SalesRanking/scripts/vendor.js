@@ -119,8 +119,8 @@
                     change: function() {
                         app.vendorService.viewModel.vendorName = this.data()[0].Name;
                         app.vendorService.viewModel.vendorBestClient = "Melhor cliente: " + this.data()[0].BestClient;
-                        app.vendorService.viewModel.vendorTotalEarned = "Total vendas anual: " + this.data()[0].TotalSales;
-                        app.vendorService.viewModel.vendorObjective = "Objectivo anual: " + this.data()[0].TotalTarget;
+                        app.vendorService.viewModel.vendorTotalEarned = "Total vendas anual: " + this.data()[0].TotalSales + "€";
+                        app.vendorService.viewModel.vendorObjective = "Objectivo anual: " + this.data()[0].TotalTarget + "€";
                         app.vendorService.viewModel.vendorImage = vendorImage(app.vendorService.viewModel.vendorName);
                         var lastMonthVariationTmpl = kendo.template($("#lastMonthVariationTmpl").html());
                         $(".lastMonthVariationContainer").html(lastMonthVariationTmpl({MonthSales: this.data()[0].MonthSales, LastMonthSales: this.data()[0].LastMonthSales}));
@@ -177,7 +177,7 @@
                     enableSwipe: false,
                     tap: function(e){
                         app.vendorService.listViewModel.closeFilterPopover(e);
-                        var vendorName = $(e.touch.currentTarget).find("span").html();
+                        var vendorName = $(e.touch.currentTarget).find("label").text();
                         kendo.mobile.application.navigate("#tabstrip-vendor?uid=" + vendorName);
                     }
                 });
