@@ -24,6 +24,7 @@
         vendorBestClient: "",
         vendorTotalEarned: "",
         vendorObjective: "",
+        vendorImage: "",
         
         init: function () {
             var that = this;
@@ -120,10 +121,12 @@
                         app.vendorService.viewModel.vendorBestClient = "Melhor Cliente: " + this.data()[0].BestClient;
                         app.vendorService.viewModel.vendorTotalEarned = "Total Vendas anuais: " + this.data()[0].TotalSales;
                         app.vendorService.viewModel.vendorObjective = "Objectivo anual: " + this.data()[0].TotalTarget;
+                        app.vendorService.viewModel.vendorImage = vendorImage(app.vendorService.viewModel.vendorName);
                         kendo.bind($(".vendorInfo .spanVendorName"), app.vendorService.viewModel);
                         kendo.bind($(".vendorInfo .spanVendorBestClient"), app.vendorService.viewModel);
                         kendo.bind($(".vendorInfo .spanVendorTotalEarned"), app.vendorService.viewModel);
                         kendo.bind($(".vendorInfo .spanVendorObjective"), app.vendorService.viewModel);
+                        kendo.bind($(".vendorInfoContainer .vendorImg"), app.vendorService.viewModel);
                         getData(6, "http://localhost/SalesRankingWeb/api/Vendors/GetVendorLastMonthGrowthRankingByClient?vendorName=" + this.data()[0].Name,
                             "lastMonthGrowthDataSourceByClient", app.vendorService.viewModel);                        
                         app.vendorService.viewModel.createLastMonthGrowthChart();
