@@ -37,9 +37,9 @@
             <div id="home">
                 <div class="container-fluid">
                     <div class="row-fluid">
-                        <div class="panel panel-default span4">
+                        <div class="panel panel-default span3">
                             <div class="panel-heading">
-                                <span style="color:#4D4D4D">Ranking Agosto</span>
+                                <label>Ranking Agosto</label>
                             </div>
                             <div class="panel-body">
                                 <div id="VendorRankingByMonthContainer">
@@ -49,50 +49,55 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel panel-default span8">
-                        <div class="panel-body">
-                            <div id="clientcolumn-chart"></div>    
+                        <div class="span9">
+                            <div class="row-fluid">
+                                <div class="panel panel-default span12">
+                                    <div class="panel-body">
+                                        <div id="clientcolumn-chart"></div>    
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            <div class="row-fluid">
+                                <div class="panel panel-default span4">
+                                    <div class="panel-heading">
+                                        <label>Crescimento Anual/Cliente</label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div id="ClientYearGrowthContainer">
+                                            <ul data-role="listview" id="ClientYearGrowthListView" data-bind="source: yearGrowthDataSource"
+                                                data-template="ClientYearGrowthListViewTmpl">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default span4">
+                                    <div class="panel-heading">
+                                        <label>Lucro Mensal/Cliente</label>
+                                    </div>
+                                    <div class="panel-body">       
+                                        <div id="ClientMonthAbsolutePerformanceContainer">
+                                            <ul data-role="listview" id="ClientMonthAbsolutePerformanceListView" data-bind="source: absoluteRankingLastMonthDataSource"
+                                                data-template="ClientMonthAbsolutePerformanceListViewTmpl">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default span4">
+                                    <div class="panel-heading">
+                                        <label>Lucro Anual/Cliente</label>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div id="ClientYearAbsolutePerformanceContainer">
+                                            <ul data-role="listview" id="ClientYearAbsolutePerformanceListView" data-bind="source: absoluteRankingDataSource"
+                                                data-template="ClientYearAbsolutePerformanceListViewTmpl">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
                     </div>
-                    <div class="row-fluid">
-                        <div class="panel panel-default span4">
-                            <div class="panel-heading">
-                                <label>Crescimento Anual/Cliente</label>
-                            </div>
-                            <div class="panel-body">
-                                <div id="ClientYearGrowthContainer">
-                                    <ul data-role="listview" id="ClientYearGrowthListView" data-bind="source: yearGrowthDataSource"
-                                        data-template="ClientYearGrowthListViewTmpl">
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default span4">
-                            <div class="panel-heading">
-                                <label>Lucro Mensal/Cliente</label>
-                            </div>
-                            <div class="panel-body">       
-                                <div id="ClientMonthAbsolutePerformanceContainer">
-                                    <ul data-role="listview" id="ClientMonthAbsolutePerformanceListView" data-bind="source: absoluteRankingLastMonthDataSource"
-                                        data-template="ClientMonthAbsolutePerformanceListViewTmpl">
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default span4">
-                            <div class="panel-heading">
-                                <label>Lucro Anual/Cliente</label>
-                            </div>
-                            <div class="panel-body">
-                                <div id="ClientYearAbsolutePerformanceContainer">
-                                    <ul data-role="listview" id="ClientYearAbsolutePerformanceListView" data-bind="source: absoluteRankingDataSource"
-                                        data-template="ClientYearAbsolutePerformanceListViewTmpl">
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             
@@ -187,14 +192,14 @@
         
         <script id="VendorRankingByMonthContainerTmpl" type="text/x-kendo-tmpl">
             <div style="float:left;#= Ranking == 1 ? "font-size:14px" : (Ranking == 2 || Ranking == 3 ? "font-size:14px" : "font-size:14px") #">#: Ranking #º</div>
-            <div style="margin-left:10px;float:left;#= Ranking==1 ? "width:80px;" : (Ranking==2 || Ranking==3 ? "width:50px;height:50px" : "width:20px;height:20px") #">
-                <img src="#: vendorImage(Vendor)#" width="#= Ranking==1 ? 80 : (Ranking==2 || Ranking==3 ? 50 : 20)#" />
+            <div style="margin-left:10px;float:left;#= Ranking<= 3 ? "width:50px;height:50px" : "width:20px;height:20px" #">
+                <img src="#: vendorImage(Vendor)#" width="#= Ranking<= 3 ? 50 : 20#" />
             </div>
             <div style="float:right">
                 <label title="#:Ranking == 1 ? "Manteve o ranking do mês anterior" : (Ranking==2 || Ranking==3 ? "Subiu 2 posições no ranking": (Ranking==4 ? "Desceu 2 posições no ranking" : "Desceu 3 posições no ranking")) #" style="#:Ranking ==1 ? "color:blue" : (Ranking==2 || Ranking==3 ? "color:green" : "color:red")#" class="position" title="">
                     #:Ranking == 1 ? "=" : (Ranking==2 || Ranking==3 ? "▲ 2": (Ranking==4 ? "▼ 2" : "▼ 3")) #
                 </label>
-                <a class="hide" data-rel="popover" id="info-popover-a" href="\\#popover-vendor" data-role="button">+</a>
+                <a title="Detalhe do vendedor" id="info-vendor" href="\\#tabstrip-vendor?uid=#: Vendor#" data-role="button" style="font-size: 0.6em" data-icon="details">Mais Info</a>
             </div>
             <div style="background-image:url(styles/images/gold.png);width:32px;height:32px;position:fixed;margin-top:0px;margin-left:-10px;#= Ranking != 1 ? "display:none" : "" #"></div>
             <div style="background-image:url(styles/images/silver.png);width:32px;height:32px;position:fixed;margin-top:0px;margin-left:-10px;#= Ranking != 2 ? "display:none" : "" #"></div>
@@ -289,6 +294,7 @@
                     </div>
                     <div class="view-title-container" style="float:left;text-align: center;width:100%;margin-top:-47px">
                         <span style="color:#4D4D4D;font-size:18px" class="viewTitle">Geral</span>
+                        <a data-role="button" data-rel="popover" href="#settings-popover" data-icon="settings" style="margin-right:10px;float:right"></a>
                     </div>
                 </div>
             </div>

@@ -65,3 +65,11 @@ body, html {
     background:url('../styles/images/header-back.png');
     background-position:bottom;
 }
+
+label {
+    margin-bottom: 0px !important;
+}
+
+.panel-heading {
+    text-align: center;
+}
